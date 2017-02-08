@@ -1,0 +1,14 @@
+[
+	{ "exercise": "Crunches",
+		"ei": 20},
+	{ "exercise": "Walking",
+		"ei": 15},
+	{ "exercise": "Running",
+		"ei": 40},
+	{ "exercise": "Sprinting",
+		"ei": 60},
+	{ "exercise": "Squats",
+		"ei": 60},
+	{ "exercise": "Bench press",
+		"ei": 45}
+]
