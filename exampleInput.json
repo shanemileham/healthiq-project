@@ -1,0 +1,27 @@
+[
+  {
+    "type": "exercise",
+    "id": 3,
+    "minutes": "420"
+  },
+  {
+    "type": "food",
+    "id": 21,
+    "minutes": "540"
+  },
+  {
+    "type": "food",
+    "id": 27,
+    "minutes": "540"
+  },
+  {
+    "type": "food",
+    "id": 60,
+    "minutes": "540"
+  },
+  {
+    "type": "exercise",
+    "id": 3,
+    "minutes": "1020"
+  }
+]
