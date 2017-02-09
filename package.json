@@ -6,8 +6,8 @@
   "scripts": {
     "lint": "eslint lib/**/*.js test/**/*.js",
     "document": "node_modules/.bin/jsdoc --configure .jsdoc.json --verbose",
-    "docs": "open ./docs/healthiq-project/1.0.0/index.html",
-    "test": "npm run lint && npm run document && nyc mocha --recursive",
+    "docs": "npm run document && open ./docs/healthiq-project/1.0.0/index.html",
+    "test": "npm run lint && nyc mocha --recursive",
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "sim": "node lib/index.js"
   },
