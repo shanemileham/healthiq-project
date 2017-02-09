@@ -46,10 +46,11 @@ so that **timestamps are integers between 0 and 1440**
 
 Solution Phases:
 1. Read inputs (Assume they are well-formed)
-2. Convert inputs to influence array (which represents the influence of food or
+2. Lookup exercise or glycemic index from DB and add to input object
+3. Convert inputs to influence array (which represents the influence of food or
   exercise on blood sugar based on time of the day)
-3. Create blood sugar array from influence array (using the above rules of food,
+4. Create blood sugar array from influence array (using the above rules of food,
   exercise, and normalization)
-4. Create a glycation array from blood sugar array (using the above rule of
+5. Create a glycation array from blood sugar array (using the above rule of
   glycation)
-5. Output blood sugar and glycation arrays
+6. Output blood sugar and glycation arrays
