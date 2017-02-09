@@ -28,16 +28,15 @@ describe('lookupIndex', () => {
       },
     ];
     const INDEX = 1337;
-    let data = `[
+    let data = [
       {
-        "type": "exercise",
-        "index": ${INDEX}
-      }
-    ]`;
+        'index': INDEX,
+      },
+    ];
 
     let fsp = require('fs-promise');
     let fspStub = sandbox.stub(fsp, 'readFile');
-    fspStub.returns(Promise.resolve(data));
+    fspStub.returns(Promise.resolve(JSON.stringify(data)));
 
     return lookupIndex(inputs)
     .then((augmented) => {
@@ -54,16 +53,15 @@ describe('lookupIndex', () => {
       },
     ];
     const INDEX = 1337;
-    let data = `[
+    let data = [
       {
-        "type": "exercise",
-        "index": ${INDEX}
-      }
-    ]`;
+        'index': INDEX,
+      },
+    ];
 
     let fsp = require('fs-promise');
     let fspStub = sandbox.stub(fsp, 'readFile');
-    fspStub.returns(Promise.resolve(data));
+    fspStub.returns(Promise.resolve(JSON.stringify(data)));
 
     return lookupIndex(inputs)
     .then((augmented) => {
@@ -72,5 +70,37 @@ describe('lookupIndex', () => {
     });
   });
 
-  it('should correctly add a mix of food and exercise indices');
+  it('should correctly add a mix of food and exercise indices', () => {
+    let inputs = [
+      {
+        'type': 'exercise',
+        'id': 0,
+      },
+      {
+        'type': 'food',
+        'id': 1,
+      },
+    ];
+    const EXERCISE_INDEX = 1;
+    const FOOD_INDEX = 2;
+    let data = [
+      {
+        'index': EXERCISE_INDEX,
+      },
+      {
+        'index': FOOD_INDEX,
+      },
+    ];
+
+    let fsp = require('fs-promise');
+    let fspStub = sandbox.stub(fsp, 'readFile');
+    fspStub.returns(Promise.resolve(JSON.stringify(data)));
+
+    return lookupIndex(inputs)
+    .then((augmented) => {
+      inputs[0].index = EXERCISE_INDEX;
+      inputs[1].index = FOOD_INDEX;
+      augmented.toString().should.equal(inputs.toString());
+    });
+  });
 });
