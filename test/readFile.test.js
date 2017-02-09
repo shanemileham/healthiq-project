@@ -1,12 +1,12 @@
 require('./bootstrap.test.js');
 
-describe('readInputs', () => {
-  let readInputs = require('../lib/readInputs.js');
+describe('readFile', () => {
+  let readFile = require('../lib/readFile.js');
 
   it('should return a rejected promise if the input is undefined', () => {
-    readInputs(undefined)
+    readFile(undefined)
     .then(() => {
-      assert.fail('readInputs should reject undefined input');
+      assert.fail('readFile should reject undefined input');
     })
     .catch((error) => {
       error.should.equal('Input is undefined');
@@ -25,7 +25,7 @@ describe('readInputs', () => {
     let fspStub = sinon.stub(fsp, 'readFile');
     fspStub.returns(Promise.resolve(data));
 
-    readInputs('exampleInput.json')
+    readFile('exampleInput.json')
     .then((output) => {
       output.toString().should.equal(JSON.parse(data).toString());
     })
