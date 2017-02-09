@@ -10,6 +10,10 @@ This simulator can be run using the following command:
 
 `npm run sim exampleInput.json`
 
+The documentation can be viewed with the following command:
+
+`npm run docs`
+
 ## Project Description
 
 Simulator I/O:
