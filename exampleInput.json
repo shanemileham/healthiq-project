@@ -2,26 +2,26 @@
   {
     "type": "exercise",
     "id": 3,
-    "time": "420"
+    "time": 420
   },
   {
     "type": "food",
     "id": 21,
-    "time": "540"
+    "time": 540
   },
   {
     "type": "food",
     "id": 27,
-    "time": "540"
+    "time": 540
   },
   {
     "type": "food",
     "id": 60,
-    "time": "540"
+    "time": 540
   },
   {
     "type": "exercise",
     "id": 3,
-    "time": "1020"
+    "time": 1020
   }
 ]

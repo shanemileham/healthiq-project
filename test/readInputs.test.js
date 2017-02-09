@@ -18,7 +18,7 @@ describe('readInputs', () => {
       {
         "type": "exercise",
         "id": 3,
-        "time": "420"
+        "time": 420
       }
     ]`;
     let fsp = require('fs-promise');
