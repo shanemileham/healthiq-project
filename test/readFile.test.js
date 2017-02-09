@@ -3,6 +3,14 @@ require('./bootstrap.test.js');
 describe('readFile', () => {
   let readFile = require('../lib/readFile.js');
 
+  let sandbox;
+  beforeEach(() => {
+      sandbox = sinon.sandbox.create();
+  });
+  afterEach(() => {
+      sandbox.restore();
+  });
+
   it('should return a rejected promise if the input is undefined', () => {
     readFile(undefined)
     .then(() => {
@@ -13,7 +21,7 @@ describe('readFile', () => {
     });
   });
 
-  it('should read a valid input correctly', sinon.test(() => {
+  it('should read a valid input correctly', () => {
     let data = `[
       {
         "type": "exercise",
@@ -32,5 +40,5 @@ describe('readFile', () => {
     .catch((error) => {
       assert.fail('Error reading valid input');
     });
-  }));
+  });
 });
