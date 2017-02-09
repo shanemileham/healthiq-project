@@ -32,5 +32,8 @@
     "mocha": "*",
     "nyc": "^10.0.0",
     "sinon": "*"
+  },
+  "dependencies": {
+    "fs-promise": "^1.0.0"
   }
 }
