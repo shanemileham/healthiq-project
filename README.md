@@ -52,9 +52,9 @@ Solution Phases:
 1. Read inputs (Assume they are well-formed)
 2. Lookup exercise or glycemic index from DB and add to input object
 3. Convert inputs to influence array (which represents the influence of food or
-  exercise on blood sugar based on time of the day)
+  exercise on blood sugar based on time of the day). 1440 - one for each minute.
 4. Create blood sugar array from influence array (using the above rules of food,
-  exercise, and normalization)
+  exercise, and normalization). 1441 points to include both midnights.
 5. Create a glycation array from blood sugar array (using the above rule of
-  glycation)
+  glycation). 1441 points to include both midnights.
 6. Output blood sugar and glycation arrays
