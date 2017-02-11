@@ -1,8 +1,9 @@
 # Health IQ - Technical Coding Project (Blood Sugar Simulator)
 
-
 [![travis-ci](https://api.travis-ci.org/shanemileham/healthiq-project.svg?branch=master)](https://travis-ci.org/shanemileham/healthiq-project)
 [![codecov](https://codecov.io/gh/shanemileham/healthiq-project/branch/master/graph/badge.svg)](https://codecov.io/gh/shanemileham/healthiq-project)
+[![Dependency Badge](https://david-dm.org/shanemileham/healthiq-project.svg)](https://david-dm.org/shanemileham/healthiq-project)
+[![Dependency Dev Badge](https://david-dm.org/shanemileham/healthiq-project/dev-status.svg)](https://david-dm.org/shanemileham/healthiq-project?type=dev)
 
 ## Blood Sugar Simulator
 
@@ -53,6 +54,7 @@ so that **timestamps are integers between 0 and 1440**
 - Input will be in JSON format for simplicity.
 
 Solution Phases:
+
 1. Read inputs (Assume they are well-formed)
 2. Lookup exercise or glycemic index from DB and add to input object
 3. Convert inputs to influence array (which represents the influence of food or
