@@ -50,7 +50,7 @@ interval of one minute**.
 - Because output graphs are for a single day, I shifted and truncated timestamps
 so that **timestamps are integers between 0 and 1440**
 (number of minutes in a day).
-- Input and Output will be in JSON format for simplicity.
+- Input will be in JSON format for simplicity.
 
 Solution Phases:
 1. Read inputs (Assume they are well-formed)
@@ -62,3 +62,4 @@ Solution Phases:
 5. Create a glycation array from blood sugar array (using the above rule of
   glycation). 1441 points to include both midnights.
 6. Output blood sugar and glycation arrays
+7. Open graphs of the output
