@@ -6,9 +6,13 @@
 
 ## Blood Sugar Simulator
 
-This simulator can be run using the following command:
+(_First install packages with `npm install`_)
 
-`npm run sim exampleInput.json`
+This simulator can be run using the following commands:
+
+`npm run server` (will start the server)
+
+`npm run sim exampleInput.json` (will run the simulator)
 
 The documentation can be viewed with the following command:
 

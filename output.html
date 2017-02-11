@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<svg id="bloodSugar" width="960" height="500"></svg>
+<svg id="glycation" width="960" height="500"></svg>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script>
+
+var bloodSugar = d3.select("#bloodSugar"),
+    glycation = d3.select("#glycation"),
+    margin = {top: 20, right: 20, bottom: 30, left: 50},
+    width = +bloodSugar.attr("width") - margin.left - margin.right,
+    height = +bloodSugar.attr("height") - margin.top - margin.bottom,
+    g1 = bloodSugar.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    g2 = glycation.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+var x = d3.scaleLinear()
+    .rangeRound([0, width]);
+
+var y = d3.scaleLinear()
+    .rangeRound([height, 0]);
+
+var line1 = d3.line()
+    .x(function(d) { return x(d.time); })
+    .y(function(d) { return y(d.bloodSugar); });
+
+var line2 = d3.line()
+    .x(function(d) { return x(d.time); })
+    .y(function(d) { return y(d.glycation); });
+
+d3.tsv("output.tsv", function(d) {
+  d.time = +d.time;
+  d.bloodSugar = +d.bloodSugar;
+  return d;
+}, function(error, data) {
+  if (error) throw error;
+
+  x.domain(d3.extent(data, function(d) { return d.time; }));
+  y.domain(d3.extent(data, function(d) { return d.bloodSugar; }));
+
+  g1.append("g")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x))
+    .select(".domain")
+      .remove();
+
+  g1.append("g")
+      .call(d3.axisLeft(y))
+    .append("text")
+      .attr("fill", "#000")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", "0.71em")
+      .attr("text-anchor", "end")
+      .text("Blood Sugar");
+
+  g1.append("path")
+      .datum(data)
+      .attr("fill", "none")
+      .attr("stroke", "steelblue")
+      .attr("stroke-linejoin", "round")
+      .attr("stroke-linecap", "round")
+      .attr("stroke-width", 1.5)
+      .attr("d", line1);
+});
+
+d3.tsv("output.tsv", function(d) {
+  d.time = +d.time;
+  d.glycation = +d.glycation;
+  return d;
+}, function(error, data) {
+  if (error) throw error;
+
+  x.domain(d3.extent(data, function(d) { return d.time; }));
+  y.domain(d3.extent(data, function(d) { return d.glycation; }));
+
+  g2.append("g")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x))
+    .select(".domain")
+      .remove();
+
+  g2.append("g")
+      .call(d3.axisLeft(y))
+    .append("text")
+      .attr("fill", "#000")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", "0.71em")
+      .attr("text-anchor", "end")
+      .text("Glycation");
+
+  g2.append("path")
+      .datum(data)
+      .attr("fill", "none")
+      .attr("stroke", "steelblue")
+      .attr("stroke-linejoin", "round")
+      .attr("stroke-linecap", "round")
+      .attr("stroke-width", 1.5)
+      .attr("d", line2);
+});
+
+</script>
