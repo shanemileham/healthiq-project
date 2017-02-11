@@ -45,13 +45,24 @@ Glycation:
 
 ## Explanation
 
-I/O Decisions:
+Decisions:
 - Because normalization changes blood sugar values every minute, I used a **time
 interval of one minute**.
 - Because output graphs are for a single day, I shifted and truncated timestamps
 so that **timestamps are integers between 0 and 1440**
 (number of minutes in a day).
 - Input will be in JSON format for simplicity.
+- "Magic numbers" specified in the project details are included within functions
+but in a large scale project would be passed in the parameters to ensure
+function purity. To simplify code for this project only, magic numbers have
+been left in and have been tested accordingly. List of numbers include:
+120 (food duration), 1/120 (food influence per minute), 60 (exercise duration),
+-60 (exercise influence per minute), 1440 (minutes assessed), 1441 (data points)
+80 (starting blood sugar), +/-1 (normalization rate), 150 (glycation threshold).
+- All input is assumed to be well-formed for the purpose of this project. This
+is to simplify assessment of code by omitting error checks at the beginning of
+every function. In production code (where function modules could be easily
+repurposed), functions would include error checking for all input parameters.
 
 Solution Phases:
 
