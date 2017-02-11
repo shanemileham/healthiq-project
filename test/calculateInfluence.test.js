@@ -7,9 +7,9 @@ describe('calculateInfluence', () => {
     calculateInfluence([]).length.should.equal(1440);
   });
 
-  it('should return a zero-filled array when given no inputs', () => {
+  it('should return a null-filled array when given no inputs', () => {
     let influence = calculateInfluence([]);
-    influence.filter((element) => element !== 0).should.be.empty;
+    influence.filter((element) => element !== null).should.be.empty;
   });
 
   it('should calculate the influence of food lasting two hours', () => {
@@ -20,7 +20,7 @@ describe('calculateInfluence', () => {
     }];
 
     let influence = calculateInfluence(input);
-    influence.filter((element) => element !== 0).length.should.equal(2*60);
+    influence.filter((element) => element !== null).length.should.equal(2*60);
   });
 
   it('should calculate the influence of exercise lasting an hour', () => {
@@ -31,7 +31,7 @@ describe('calculateInfluence', () => {
     }];
 
     let influence = calculateInfluence(input);
-    influence.filter((element) => element !== 0).length.should.equal(60);
+    influence.filter((element) => element !== null).length.should.equal(60);
   });
 
   it('should calculate the influence of food totalling its GI', () => {
@@ -76,10 +76,10 @@ describe('calculateInfluence', () => {
     let sum = influence.reduce((a, b) => a + b, 0);
     sum.should.equal(60);
 
-    // Array should look like [1,1,...,0,0,...,1,1,...0,0...]
+    // Array should look like [1,1,...,0,0,...,1,1,...null,null...]
     influence.slice(0, 30).filter((element) => element !== 1).should.be.empty;
     influence.slice(30, 90).filter((element) => element !== 0).should.be.empty;
     influence.slice(90, 120).filter((element) => element !== 1).should.be.empty;
-    influence.slice(120).filter((element) => element !== 0).should.be.empty;
+    influence.slice(120).filter((element) => element !== null).should.be.empty;
   });
 });

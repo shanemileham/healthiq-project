@@ -34,5 +34,33 @@ describe('calculateBloodSugar', () => {
     });
   });
 
-  it('should correctly calculate blood sugar with undefined influence');
+  it('should correctly calculate blood sugar with null influence (+)', () => {
+    let array = new Array(50).fill(null);
+    array[0] = 9;
+    let bloodSugar = calculateBloodSugar(array);
+    bloodSugar.forEach((element, index) => {
+      if (index === 0) {
+        element.should.equal(80);
+      } else if (index < 10) {
+        element.should.equal(80 + 10 - index);
+      } else {
+        element.should.equal(80);
+      }
+    });
+  });
+
+  it('should correctly calculate blood sugar with null influence (-)', () => {
+    let array = new Array(50).fill(null);
+    array[0] = -9;
+    let bloodSugar = calculateBloodSugar(array);
+    bloodSugar.forEach((element, index) => {
+      if (index === 0) {
+        element.should.equal(80);
+      } else if (index < 10) {
+        element.should.equal(80 - 10 + index);
+      } else {
+        element.should.equal(80);
+      }
+    });
+  });
 });

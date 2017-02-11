@@ -14,7 +14,7 @@ describe('lookupIndex', () => {
   it('should not add anything if there are no inputs', () => {
     let inputs = [];
 
-    lookupIndex(inputs)
+    return lookupIndex(inputs)
     .then((augmented) => {
       augmented.should.be.empty;
     });
